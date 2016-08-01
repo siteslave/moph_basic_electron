@@ -22,9 +22,6 @@
     "url": "https://github.com/electron/electron-quick-start/issues"
   },
   "homepage": "https://github.com/electron/electron-quick-start#readme",
-  "devDependencies": {
-    "electron-prebuilt": "^1.2.0"
-  },
   "dependencies": {
     "bootstrap": "^3.3.7"
   }
