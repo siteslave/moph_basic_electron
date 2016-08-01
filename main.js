@@ -10,7 +10,7 @@ const {ipcMain} = require('electron')
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
-// let page1
+let settingWindow
 // let page2
 
 function createWindow () {
@@ -21,8 +21,16 @@ function createWindow () {
     fullscreen: false
   })
 
-  mainWindow.loadURL(`file://${__dirname}/index.html`)
+  settingWindow = new BrowserWindow({
+    width: 400,
+    height: 400
+  })
 
+  mainWindow.loadURL(`file://${__dirname}/index.html`)
+  settingWindow.loadURL(`file://${__dirname}/setting.html`)
+
+  settingWindow.hide();
+  
   // Open the DevTools.
   mainWindow.webContents.openDevTools()
 
@@ -34,9 +42,19 @@ function createWindow () {
     mainWindow = null
   })
 
+  settingWindow.on('close', function (event) {
+    settingWindow.hide();
+    event.preventDefault();
+  });
+
   ipcMain.on('get-config-file', (event, arg) => {
     var file = './home/configure.json';
     event.returnValue = file;
+  });
+
+  ipcMain.on('open-setting', (event, arg) => {
+    settingWindow.show();
+    event.returnValue = true;
   });
 
 }
