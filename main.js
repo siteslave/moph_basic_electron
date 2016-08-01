@@ -20,24 +20,9 @@ function createWindow () {
     height: 600,
     fullscreen: false
   })
-  // page1 = new BrowserWindow({
-  //   width: 800,
-  //   height: 600,
-  //   fullscreen: false
-  // })
-  // page2 = new BrowserWindow({
-  //   width: 800,
-  //   height: 600,
-  //   fullscreen: false
-  // })
 
-  // and load the index.html of the app.
-  // mainWindow.loadURL(`file://${__dirname}/index.html`)
-  // page1.loadURL(`file://${__dirname}/page1.html`)
-  // page2.loadURL(`file://${__dirname}/page2.html`)
+  mainWindow.loadURL(`file://${__dirname}/index.html`)
 
-  // page1.hide();  
-  // page2.hide();  
   // Open the DevTools.
   mainWindow.webContents.openDevTools()
 
